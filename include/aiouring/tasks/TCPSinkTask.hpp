@@ -36,6 +36,7 @@ public:
         }
 
         bytesToWrite = io_result;
+        offset = 0;
 
         AWAIT_OP(Write, writeTo, tcpTo, buffer.data() + offset, bytesToWrite);
 
