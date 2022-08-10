@@ -57,7 +57,7 @@ public:
         }
 
         AWAIT_OP(Accept, acceptClient, tcpSocket, reinterpret_cast<struct
-                sockaddr *>(&serviceAddr), &sockaddr_in_len);
+                sockaddr *>(&client_addr), &sockaddr_in_len);
 
         if(io_result < 0)
         {
@@ -65,7 +65,7 @@ public:
                                          uexcept::errnoStr(-io_result)));
         }
 
-        aioUring->pushTask(aioUring->newTask<TAcceptTask>(aioUring, io_result));
+        aioUring->pushTask(aioUring->newTask<TAcceptTask>(aioUring, io_result, client_addr));
 
         ASYNC_CONTINUE_OP(acceptClient);
 
@@ -77,6 +77,7 @@ private:
     int tcpListeningPort{-1};
     int maxBacklogConnections{-1};
     sockaddr_in serviceAddr{};
+    sockaddr_in client_addr{};
     socklen_t sockaddr_in_len =
             sizeof(struct sockaddr_in);
     int tcpSocket{-1};
