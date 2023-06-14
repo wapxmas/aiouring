@@ -9,7 +9,7 @@
 Пример:
 
 ```c++
-#include <hpuring/AIOUring.h>
+#include <aiouring/AIOUring.h>
 
 int main() {
     try
