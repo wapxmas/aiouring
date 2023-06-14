@@ -1,0 +1,10 @@
+#define VSBalancer_VERSION_MAJOR @VSBalancer_VERSION_MAJOR@
+#define VSBalancer_VERSION_MINOR @VSBalancer_VERSION_MINOR@
+
+#define VSBalancer_VersionStr std::string{std::to_string(VSBalancer_VERSION_MAJOR) \
+    + "." + std::to_string(VSBalancer_VERSION_MINOR)}
+
+#define VSBalancer_Description "@VSBalancer_DESCRIPTION@"
+
+#define VSBalancer_DescVer std::string{VSBalancer_Description + \
+    std::string{" v"} + VSBalancer_VersionStr}

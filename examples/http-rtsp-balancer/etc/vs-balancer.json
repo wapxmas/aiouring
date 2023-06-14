@@ -1,0 +1,27 @@
+{
+  "port": 1558,
+  "maxBacklog": 128,
+  "redirects": [
+    {
+      "name": "recorder",
+      "targets": [ "localhost:1556" ],
+      "type": "postgresql-uri",
+      "templates": [
+        "/$",
+        "/cameras/$",
+        "/cameras/$/info",
+        "/cameras/$/lacuna",
+        "/cameras/$/screenshot",
+        "/cameras/$/ranges",
+        "/cameras/$/record"
+      ]
+    }
+  ],
+  "postgresql": [
+    {
+      "redirectName": "recorder",
+      "connectionString": "postgresql://postgres:postgres@localhost/vs-balancer",
+      "tableName": "rec_loadf"
+    }
+  ]
+}
